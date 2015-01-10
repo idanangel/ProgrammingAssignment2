@@ -1,5 +1,6 @@
-## Put comments here that give an overall description of what your
-## functions do
+## The functions below inverse a square matrix. 
+## To avoid recalculating the matrix inverse, the cached matrix would be returened 
+## in case the original matrix hasn't changed and that the matrix inverse was already calculated
 
 ## Write a short comment describing this function
 
