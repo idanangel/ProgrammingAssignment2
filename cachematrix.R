@@ -2,9 +2,10 @@
 ## To avoid recalculating the matrix inverse, the cached matrix would be returened 
 ## in case the original matrix hasn't changed and that the matrix inverse was already calculated
 
-## Write a short comment describing this function
-
+## This funcion will create a vector containing 4 functions to get/set the matrix and 
+## also to get/set the inverse of the matrix. Those functions are used in the cachesolve function
 makeCacheMatrix <- function(x = matrix()) {
+     
      invers <- NULL
      setMatrix <- function(y) {
           x <<- y
