@@ -3,17 +3,27 @@
 ## in case the original matrix hasn't changed and that the matrix inverse was already calculated
 
 ## This funcion will create a vector containing 4 functions to get/set the matrix and 
-## also to get/set the inverse of the matrix. Those functions are used in the cachesolve function
+## also to get/set the inverse of the matrix. The list of functions retured by makeCacheMatrix
+## can be used t created a special "matrix" that can cache it's own invers
 makeCacheMatrix <- function(x = matrix()) {
      
-     invers <- NULL
+     ## cachedInverse is initialized to null
+     cachedInverse <- NULL
+     
+     ## use the setMatrix function to store a matrix 
      setMatrix <- function(y) {
           x <<- y
-          invers <<- NULL
+          cachedInverse <<- NULL
      }
      getMatrix <- function() x
-     setInverse <- function(mean) m <<- mean
+     
+     ## use this function to set a new calculated matrix inverse
+     setInverse <- function(inverse) cachedInverse <<- inverse
+     
+     ## use this function to get the cached matrix
      getInverse <- function() m
+     
+     ## List that allows acceess to all the functions for cacheing matrix and it's inverse
      list(setMatrix = setMatrix, getMatrix = getMatrix,
           setInverse = setInverse,
           getInverse = getInverse)
@@ -35,7 +45,7 @@ cacheSolve <- function(x, ...) {
      ## Inverse was not calculated yet for this matrix- Calculate Inverse:
      
      ## Get the matrix
-     mat <- x$get()
+     mat <- x$getMatrix()
      
      ## Calculate the inverse
      inverse <- solve(mat, ...)
